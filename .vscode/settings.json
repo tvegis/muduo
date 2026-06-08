@@ -1,0 +1,6 @@
+{
+  // 只对当前工作区关闭 C/C++ 的 IntelliSense 和错误提示
+  "C_Cpp.intelliSenseEngine": "Disabled",
+  "C_Cpp.errorSquiggles": "Disabled",
+  "C_Cpp.autocomplete": "Disabled"
+}
