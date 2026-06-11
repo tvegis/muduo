@@ -100,4 +100,9 @@ private:
     // 数据缓冲区
     Buffer inputBuffer_;    // 接收数据的缓冲区
     Buffer outputBuffer_;   // 发送数据的缓冲区 用户send向outputBuffer_发
+
+    // sendFile 零拷贝文件传输状态追踪
+    int sendingFileFd_;           // 正在发送的文件描述符（-1 表示无活动传输）
+    off_t sendingFileOffset_;     // 当前发送到的文件偏移
+    size_t sendingFileRemaining_; // 剩余待发送字节数
 };
