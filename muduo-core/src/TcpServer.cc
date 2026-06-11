@@ -48,7 +48,7 @@ TcpServer::~TcpServer()
 // 设置底层subloop的个数
 void TcpServer::setThreadNum(int numThreads)
 {
-    int numThreads_=numThreads;
+    numThreads_ = numThreads;
     threadPool_->setThreadNum(numThreads_);
 }
 

@@ -29,7 +29,7 @@ EPollPoller::~EPollPoller()
 Timestamp EPollPoller::poll(int timeoutMs, ChannelList *activeChannels)
 {
     // 由于频繁调用poll 实际上应该用LOG_DEBUG输出日志更为合理 当遇到并发场景 关闭DEBUG日志提升效率
-    LOG_INFO("func=%s => fd total count:%lu\n", __FUNCTION__, channels_.size());
+    LOG_DEBUG("func=%s => fd total count:%lu\n", __FUNCTION__, channels_.size());
 
     int numEvents = ::epoll_wait(epollfd_, &*events_.begin(), static_cast<int>(events_.size()), timeoutMs);
     int saveErrno = errno;
@@ -37,7 +37,7 @@ Timestamp EPollPoller::poll(int timeoutMs, ChannelList *activeChannels)
 
     if (numEvents > 0)
     {
-        LOG_INFO("%d events happend\n", numEvents); // LOG_DEBUG最合理
+        LOG_DEBUG("%d events happend\n", numEvents);
         fillActiveChannels(numEvents, activeChannels);
         if (numEvents == events_.size()) // 扩容操作
         {
