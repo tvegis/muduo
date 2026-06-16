@@ -9,9 +9,11 @@
 #include "noncopyable.h"
 #include "Timestamp.h"
 #include "CurrentThread.h"
+#include "TimerId.h"
 
 class Channel;
 class Poller;
+class TimerQueue;
 
 // 事件循环类 主要包含了两个大模块 Channel Poller(epoll的抽象)
 class EventLoop : noncopyable
@@ -42,6 +44,16 @@ public:
     void removeChannel(Channel *channel);
     bool hasChannel(Channel *channel);
 
+    // 定时器接口
+    // 在 absoluteTime 时刻执行回调（一次性）
+    TimerId runAt(Timestamp absoluteTime, Functor cb);
+    // 延迟 delay 秒后执行回调（一次性）
+    TimerId runAfter(double delay, Functor cb);
+    // 每隔 interval 秒执行回调（周期性）
+    TimerId runEvery(double interval, Functor cb);
+    // 取消定时器
+    void cancel(TimerId timerId);
+
     // 判断EventLoop对象是否在自己的线程里
     bool isInLoopThread() const { return threadId_ == CurrentThread::tid(); } // threadId_为EventLoop创建时的线程id CurrentThread::tid()为当前线程id
 
@@ -67,4 +79,6 @@ private:
     std::atomic_bool callingPendingFunctors_; // 标识当前loop是否有需要执行的回调操作
     std::vector<Functor> pendingFunctors_;    // 存储loop需要执行的所有回调操作
     std::mutex mutex_;                        // 互斥锁 用来保护上面vector容器的线程安全操作
+
+    std::unique_ptr<TimerQueue> timerQueue_;  // 定时器队列
 };

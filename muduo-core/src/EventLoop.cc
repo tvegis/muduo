@@ -8,6 +8,7 @@
 #include "Logger.h"
 #include "Channel.h"
 #include "Poller.h"
+#include "TimerQueue.h"
 
 // 防止一个线程创建多个EventLoop
 __thread EventLoop *t_loopInThisThread = nullptr;
@@ -49,6 +50,7 @@ EventLoop::EventLoop()
     , poller_(Poller::newDefaultPoller(this))
     , wakeupFd_(createEventfd())
     , wakeupChannel_(new Channel(this, wakeupFd_))
+    , timerQueue_(new TimerQueue(this))
 {
     LOG_DEBUG("EventLoop created %p in thread %d\n", this, threadId_);
     if (t_loopInThisThread)
@@ -207,4 +209,28 @@ void EventLoop::doPendingFunctors()
     }
 
     callingPendingFunctors_ = false;
+}
+
+// ==================== 定时器接口 ====================
+
+TimerId EventLoop::runAt(Timestamp absoluteTime, Functor cb)
+{
+    return timerQueue_->addTimer(std::move(cb), absoluteTime, 0.0);
+}
+
+TimerId EventLoop::runAfter(double delay, Functor cb)
+{
+    Timestamp expiration(addTime(Timestamp::now(), delay));
+    return timerQueue_->addTimer(std::move(cb), expiration, 0.0);
+}
+
+TimerId EventLoop::runEvery(double interval, Functor cb)
+{
+    Timestamp expiration(addTime(Timestamp::now(), interval));
+    return timerQueue_->addTimer(std::move(cb), expiration, interval);
+}
+
+void EventLoop::cancel(TimerId timerId)
+{
+    return timerQueue_->cancel(timerId);
 }
