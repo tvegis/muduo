@@ -2,11 +2,7 @@
 
 > **本项目目前只在[知识星球](https://programmercarl.com/other/kstar.html)答疑并维护**。
 
-[知识星球](https://programmercarl.com/other/kstar.html)再添 CPP项目专栏， 关于网络库，知名的就是陈硕的muduo
-
-之前也有不少录友，自己做一个muduo写到简历上。
-
-这次 我们从 面试的角度带大家速成muduo，**【项目细节】【项目面试常见问题汇总】【拓展出的基础知识汇总】【测试相关问题】【简历写法】** 都给大家安排的明明白白。
+[知识星球](https://programmercarl.com/other/kstar.html)
 
 ## 为什么要做 muduo？
 
@@ -88,54 +84,6 @@
         * 实习
         * 项目
 
-
-
-## 简历写法
-
-为了避免[知识星球](https://programmercarl.com/other/kstar.html)里大家学习这个项目写简历重复，本项目专栏提供了三种简历写法：
-
-![](https://file1.kamacoder.com/i/algo/20240904205019.png)
-
-## 本项目常见问题
-
-面试中，面试官最喜欢问的就是项目难点，以及这个难点你是如何解决的。
-
-专栏里都给出明确的例子：
-
-![](https://file1.kamacoder.com/i/algo/20240904204734.png)
-
-## 项目亮点以及项目细节
-
-为了更好的掌握这个项目，亮点和细节都给大家讲清楚：
-
-![](https://file1.kamacoder.com/i/algo/20240904204822.png)
-
-## 项目拓展出的基础知识
-
-在做做项目的时候，最好的方式就是 理论基础知识和项目实战相结合。
-
-面试官也喜欢在 项目中问基础知识（八股文），本专栏也给出muduo可以拓展哪些基础知识
-
-![](https://file1.kamacoder.com/i/algo/20240904204936.png)
-
-## 项目专栏部分截图
-
-![](https://file1.kamacoder.com/i/algo/20240904204906.png)
-
-![](https://file1.kamacoder.com/i/algo/20240904205923.png)
-
-## 突击来用
-
-如果大家面试在即，实在没时间做项目了，可以直接按照专栏给出的【简历写法】，写到简历上，然后把项目专栏里的面试问题，都认真背一背就好了，基本覆盖 绝大多数 RPC项目问题。
-
-## 答疑
-
-本项目在[知识星球](https://programmercarl.com/other/kstar.html)里为 文字专栏形式，大家不用担心，看不懂，星球里每个项目有专属答疑群，任何问题都可以在群里问，都会得到解答：
-
-![](https://file1.kamacoder.com/i/web/2025-09-26_11-30-13.jpg)
-
-
-## 获取本项目专栏
 
 **本文档仅为星球内部专享，大家可以加入[知识星球](https://programmercarl.com/other/kstar.html)里获取，在星球置顶**
 
