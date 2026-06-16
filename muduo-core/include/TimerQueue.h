@@ -58,9 +58,6 @@ private:
     // 插入定时器到 set 中
     bool insert(Timer *timer);
 
-    // 更新 timerfd 的到期时间（取 set 中最小的 expiration）
-    void resetTimerFd(int timerfd, Timestamp expiration);
-
     EventLoop *loop_;
     const int timerfd_;
     int64_t timerfdReadCount_;   // timerfd 触发次数统计
